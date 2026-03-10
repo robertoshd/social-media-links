@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+import '../styles/global.css';
+---
+
+<Layout>
+
+</Layout>
+
+<script lang="js">
+  function copyLink(event, button) {
+    // Detener la propagación del clic para que no se active el enlace
+    event.stopPropagation();
+
+    // Obtener la URL del enlace dentro del div
+    const url = button.closest('div').querySelector('a').getAttribute('href');
+    
+    // Copiar al portapapeles
+    navigator.clipboard.writeText(url)
+      .then(() => {
+        // Ocultar el icono de copiar y mostrar el icono de "check"
+        button.querySelector('#copy-icon').style.display = 'none';
+        button.querySelector('#check-icon').style.display = 'inline-block';
+
+        // Esperar 2 segundos y luego restablecer el icono
+        setTimeout(() => {
+          button.querySelector('#check-icon').style.display = 'none';
+          button.querySelector('#copy-icon').style.display = 'inline-block';
+        }, 2000); // Espera 2 segundos
+      })
+      .catch(err => {
+        console.error('Error al copiar el enlace:', err);
+      });
+  }
+</script>
+
+
+
+  

@@ -1,0 +1,43 @@
+---
+// SocialCard.astro
+const { IconComponent, platform, username, url, bg} = Astro.props;
+---
+
+<div class="relative flex items-center gap-4 p-5 rounded-2xl text-white font-semibold shadow-lg w-full sm:w-[380px] transition-transform duration-300 transform hover:scale-105" style={`background: ${bg}`}>
+
+  <!-- Icono de la red social -->
+  <div class="p-2 bg-white/20 rounded-lg">
+    {IconComponent && <IconComponent class="w-6 h-6" />}
+  </div>
+
+  <div class="flex flex-col flex-1">
+    <span class="font-bold text-base">{platform}</span>
+    {username && <span class="text-white/70 text-sm">{username}</span>}
+  </div>
+
+  <!-- Botón copiar enlace con z-index -->
+  <button
+    onclick="copyLink(event, this)"
+    data-url={url} 
+    class="absolute top-2 right-2 w-8 h-8 bg-[#ffffff15] rounded-lg flex items-center justify-center text-white text-xl shadow-md focus:outline-none z-20"
+    aria-label="Copiar enlace"
+  >
+    <span id="copy-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-copy">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
+        <path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
+      </svg>
+    </span>
+    <span id="check-icon" class="hidden">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M5 12l5 5l10 -10" />
+      </svg>
+    </span>
+  </button>
+
+  <!-- Enlace (actúa como contenedor de navegación, con posición absoluta y z-index menor) -->
+  <a href={url} target="_blank" rel="noopener noreferrer" class="absolute inset-0 w-full h-full z-10"></a>
+
+</div>

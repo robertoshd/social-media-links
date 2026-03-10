@@ -1,0 +1,44 @@
+---
+import SocialCard from './SocialCard.astro';
+import GitHub from "./icons/GitHub.astro";
+import TikTok from "./icons/TikTok.astro";
+import Portfolio from "./icons/Portfolio.astro";
+import Contact from "./icons/Contact.astro";
+
+const socialLinks = [
+  {
+    IconComponent: Contact,
+    platform: 'Contáctame',
+    username: 'Email',
+    url: 'mailto:joserobertoshdz1423@gmail.com?Subject=Consulta%20sobre%20trabajo',
+    bg: 'linear-gradient(135deg, #090979, #37B3CC);',
+  },
+  {
+    IconComponent: GitHub,  // Pasa el componente directamente
+    platform: 'GitHub',
+    username: 'robertoshd',
+    url: 'https://github.com/robertoshd',
+    bg: 'linear-gradient(135deg, #121212, #1a1a1a, #2c2f36)',
+  },
+  {
+    IconComponent: TikTok,
+    platform: 'TikTok',
+    username: '@josmen.dev',
+    url: 'https://tiktok.com/@josmen.dev',
+    bg: 'linear-gradient(135deg, #010101, #3e2a2d, #1e1e1e)',
+  },
+  {
+    IconComponent: Portfolio,
+    platform: 'Portafolio',
+    username: 'Web',
+    url: 'https://www.portfolio-robertosh.cv',
+    bg: 'linear-gradient(135deg, #0f5739, #3d8e66)',
+  }
+];
+---
+
+<div class="flex flex-col items-center space-y-4 p-6">
+  {socialLinks.map(link => (
+    <SocialCard {...link} />
+  ))}
+</div>
