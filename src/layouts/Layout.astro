@@ -3,6 +3,8 @@ import AvatarCard from '../components/AvatarCard.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 
 import '../styles/global.css';
+
+const { title } = Astro.props;
 ---
 
 <!doctype html>
@@ -12,7 +14,27 @@ import '../styles/global.css';
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+
+		<!-- HTML Meta Tags -->
+		<title>{title}</title>
+		<meta name="description" content="Enlaces de contacto del creador de contenido en Tiktok Josmen Dev, para el aprendizaje en Programación y Desarrollo Web">
+		<meta name="robots" content="index, follow">
+		<meta name="theme-color" content="#222a35"> <!-- Color al navegador en la parte de arriba -->
+
+		<!-- Facebook Meta Tags -->
+		<meta property="og:url" content="https://josmen-dev.vercel.app">
+		<meta property="og:title" content="Enlaces de contacto de Josmen Dev">
+		<meta property="og:description" content="Enlaces de contacto del creador de contenido en Tiktok Josmen Dev, para el aprendizaje en Programación y Desarrollo Web">
+		<meta property="og:image" content="https://josmen-dev.vercel.app/images/image-preview.webp"> <!-- Cambiar image preview, prueba de vista meta -->
+		<meta property="og:image:alt" content="Imagen de enlaces de Josmen Dev">
+		<meta property="og:type" content="website">
+
+		<link rel="alternate" href="https://josmen-dev.vercel.app/en" hreflang="en-GB">
+
+		<link rel="canonical" href="https://josmen-dev.vercel.app"> 
+
+		<!-- <link rel="icon" type="image/svg+xml" href="favicon.svg"> <!- Icono en la pestaña de la página -->
+
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 	</head>
 	<body>
